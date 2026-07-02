@@ -17,23 +17,25 @@
           <h1 class="h3 mb-1">Ingresar</h1>
           <p class="muted mb-0">Accede para administrar repositorios, commits e issues.</p>
         </div>
-        <form class="form-shell p-4">
+        <form class="form-shell p-4" method="POST" action="/login">
           <div class="mb-3">
             <label class="form-label fw-semibold" for="loginEmail">Email o usuario</label>
-            <input class="form-control" id="loginEmail" placeholder="ana-dev">
+            <input class="form-control" id="loginEmail" placeholder="ana-dev" name="email">
           </div>
           <div class="mb-3">
             <div class="d-flex justify-content-between">
               <label class="form-label fw-semibold" for="loginPassword">Contrasena</label>
               <a class="small linkish" href="/password/forget">Olvide mi contrasena</a>
             </div>
-            <input class="form-control" id="loginPassword" type="password" placeholder="Tu contrasena">
+            <input 
+              name="password" 
+              class="form-control" id="loginPassword" type="password" placeholder="Tu contrasena">
           </div>
           <div class="form-check mb-4">
             <input class="form-check-input" type="checkbox" id="remember">
             <label class="form-check-label small" for="remember">Mantener sesion iniciada</label>
           </div>
-          <button class="btn btn-success w-100" type="button"><i class="bi bi-box-arrow-in-right me-1"></i>Ingresar</button>
+          <button class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right me-1"></i>Ingresar</button>
         </form>
         <p class="text-center small mt-3 mb-0">Nuevo en Git Demo? <a class="linkish" href="/register">Crear cuenta</a></p>
       </section>
