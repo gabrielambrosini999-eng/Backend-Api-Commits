@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +9,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --ink: #101828;
@@ -354,7 +357,7 @@
       background: linear-gradient(0deg, rgba(16, 24, 40, .88), rgba(16, 24, 40, .12));
     }
 
-    .audience-card > * {
+    .audience-card>* {
       position: relative;
     }
 
@@ -491,9 +494,20 @@
       transform: translateY(0);
     }
 
-    .delay-1 { transition-delay: .08s; animation-delay: .08s; }
-    .delay-2 { transition-delay: .16s; animation-delay: .16s; }
-    .delay-3 { transition-delay: .24s; animation-delay: .24s; }
+    .delay-1 {
+      transition-delay: .08s;
+      animation-delay: .08s;
+    }
+
+    .delay-2 {
+      transition-delay: .16s;
+      animation-delay: .16s;
+    }
+
+    .delay-3 {
+      transition-delay: .24s;
+      animation-delay: .24s;
+    }
 
     .audience-one {
       background-image: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85");
@@ -526,6 +540,7 @@
         opacity: 0;
         transform: translateY(18px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -533,18 +548,24 @@
     }
 
     @keyframes pulse {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: scale(1);
       }
+
       50% {
         transform: scale(1.05);
       }
     }
 
     @keyframes float-card {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0) rotate(-1deg);
       }
+
       50% {
         transform: translateY(-16px) rotate(2deg);
       }
@@ -557,9 +578,12 @@
     }
 
     @keyframes logo-pop {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0) rotate(0);
       }
+
       50% {
         transform: translateY(-2px) rotate(-6deg);
       }
@@ -570,6 +594,7 @@
         opacity: 0;
         transform: translateY(24px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -580,6 +605,7 @@
       from {
         transform: scale(1);
       }
+
       to {
         transform: scale(1.025);
       }
@@ -611,308 +637,320 @@
     }
   </style>
 </head>
+
 <body>
   <%- include('partials/nav') %>
 
-  <header class="hero">
-    <div class="hero-orbit"></div>
-    <div class="floating-chip"><i class="bi bi-lightning-charge-fill text-warning"></i><span class="fw-bold">Deploy mental: listo</span></div>
-    <div class="container-xl">
-      <span class="eyebrow"><i class="bi bi-stars"></i> Version control, pero vendido como deberia</span>
-      <h1>Convierte tu repositorio en el centro de mando del equipo.</h1>
-      <p class="hero-copy mt-4 mb-4">GitFlow Studio simula una plataforma moderna para organizar repositorios, issues, ramas, commits y colaboradores con una experiencia simple, visual y lista para presentar.</p>
-      <div class="hero-actions d-flex flex-wrap gap-3">
-        <a class="btn cta-primary pulse" href="account-create.html"><i class="bi bi-rocket-takeoff me-2"></i>Crear cuenta gratis</a>
-        <a class="btn cta-secondary" href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Ya tengo acceso</a>
+    <header class="hero">
+      <div class="hero-orbit"></div>
+      <div class="floating-chip"><i class="bi bi-lightning-charge-fill text-warning"></i><span class="fw-bold">Deploy
+          mental: listo</span></div>
+      <div class="container-xl">
+        <span class="eyebrow"><i class="bi bi-stars"></i> Version control, pero vendido como deberia</span>
+        <h1>Convierte tu repositorio en el centro de mando del equipo.</h1>
+        <p class="hero-copy mt-4 mb-4">GitFlow Studio simula una plataforma moderna para organizar repositorios, issues,
+          ramas, commits y colaboradores con una experiencia simple, visual y lista para presentar.</p>
+        <div class="hero-actions d-flex flex-wrap gap-3">
+          <a class="btn cta-primary pulse" href="account-create.html"><i class="bi bi-rocket-takeoff me-2"></i>Crear
+            cuenta gratis</a>
+          <a class="btn cta-secondary" href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Ya tengo
+            acceso</a>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <section class="metric-strip">
-    <div class="container-xl">
-      <div class="row g-3">
-        <div class="col-md-4">
-          <div class="metric-card delay-1">
-            <strong>10x</strong>
-            <p class="muted mb-0">mas claridad sobre que se esta construyendo y quien lo esta moviendo.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="metric-card delay-2">
-            <strong>5 min</strong>
-            <p class="muted mb-0">para crear cuenta, repo, issue y rama de trabajo en una demo navegable.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="metric-card delay-3">
-            <strong>100%</strong>
-            <p class="muted mb-0">enfocado en entender Git desde interfaces cercanas a herramientas reales.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="beneficios" class="section-pad">
-    <div class="container-xl">
-      <div class="row align-items-end g-4 mb-4">
-        <div class="col-lg-7">
-          <div class="section-kicker mb-2">Beneficios</div>
-          <h2 class="big-heading mb-0 reveal">Menos caos. Mas entregas. Mejor historial.</h2>
-        </div>
-        <div class="col-lg-5">
-          <p class="lead muted mb-0">La landing vende una plataforma ficticia, pero cada modulo conecta con conceptos reales de Git para aprenderlos navegando.</p>
-        </div>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-6 col-xl-3">
-          <article class="feature-card reveal">
-            <span class="feature-icon"><i class="bi bi-journal-code"></i></span>
-            <h3 class="h5">Repositorios claros</h3>
-            <p class="muted mb-0">Centraliza codigo, README, ramas y actividad del proyecto en una vista facil de explicar.</p>
-          </article>
-        </div>
-        <div class="col-md-6 col-xl-3">
-          <article class="feature-card reveal delay-1">
-            <span class="feature-icon"><i class="bi bi-record-circle"></i></span>
-            <h3 class="h5">Issues accionables</h3>
-            <p class="muted mb-0">Convierte bugs, mejoras y dudas en tareas con contexto, prioridad y responsables.</p>
-          </article>
-        </div>
-        <div class="col-md-6 col-xl-3">
-          <article class="feature-card reveal delay-2">
-            <span class="feature-icon"><i class="bi bi-diagram-3"></i></span>
-            <h3 class="h5">Ramas sin miedo</h3>
-            <p class="muted mb-0">Muestra como aislar trabajo nuevo, revisar cambios y proteger la rama principal.</p>
-          </article>
-        </div>
-        <div class="col-md-6 col-xl-3">
-          <article class="feature-card reveal delay-3">
-            <span class="feature-icon"><i class="bi bi-people"></i></span>
-            <h3 class="h5">Equipos alineados</h3>
-            <p class="muted mb-0">Gestiona permisos, colaboradores y responsabilidades con una narrativa visual simple.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="flujo" class="workflow section-pad">
-    <div class="container-xl position-relative">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-6">
-          <div class="workflow-image reveal"></div>
-        </div>
-        <div class="col-lg-6">
-          <div class="section-kicker text-info mb-2">Flujo demo</div>
-          <h2 class="big-heading mb-4 reveal">Del primer commit a una entrega revisada.</h2>
-          <div class="d-grid gap-3">
-            <div class="step reveal">
-              <div class="fw-bold mb-1"><i class="bi bi-1-circle me-2 text-info"></i>Crea un repositorio</div>
-              <div class="text-white-50">Inicia el proyecto con nombre, descripcion, visibilidad y README.</div>
-            </div>
-            <div class="step reveal delay-1">
-              <div class="fw-bold mb-1"><i class="bi bi-2-circle me-2 text-info"></i>Abre un issue</div>
-              <div class="text-white-50">Registra el problema, asigna prioridad y deja claro el criterio de cierre.</div>
-            </div>
-            <div class="step reveal delay-2">
-              <div class="fw-bold mb-1"><i class="bi bi-3-circle me-2 text-info"></i>Trabaja en una rama</div>
-              <div class="text-white-50">Separa cambios, revisa commits y prepara la integracion con main.</div>
+    <section class="metric-strip">
+      <div class="container-xl">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="metric-card delay-1">
+              <strong>10x</strong>
+              <p class="muted mb-0">mas claridad sobre que se esta construyendo y quien lo esta moviendo.</p>
             </div>
           </div>
-          <a class="btn cta-primary mt-4" href="repository-create.html"><i class="bi bi-journal-plus me-2"></i>Crear primer repositorio</a>
+          <div class="col-md-4">
+            <div class="metric-card delay-2">
+              <strong>5 min</strong>
+              <p class="muted mb-0">para crear cuenta, repo, issue y rama de trabajo en una demo navegable.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="metric-card delay-3">
+              <strong>100%</strong>
+              <p class="muted mb-0">enfocado en entender Git desde interfaces cercanas a herramientas reales.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="equipos" class="section-pad">
-    <div class="container-xl">
-      <div class="text-center mx-auto mb-5" style="max-width: 780px;">
-        <div class="section-kicker mb-2">Publico objetivo</div>
-        <h2 class="big-heading">Hecho para mostrar, vender y ensenar trabajo tecnico.</h2>
+    <section id="beneficios" class="section-pad">
+      <div class="container-xl">
+        <div class="row align-items-end g-4 mb-4">
+          <div class="col-lg-7">
+            <div class="section-kicker mb-2">Beneficios</div>
+            <h2 class="big-heading mb-0 reveal">Menos caos. Mas entregas. Mejor historial.</h2>
+          </div>
+          <div class="col-lg-5">
+            <p class="lead muted mb-0">La landing vende una plataforma ficticia, pero cada modulo conecta con conceptos
+              reales de Git para aprenderlos navegando.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-3">
+            <article class="feature-card reveal">
+              <span class="feature-icon"><i class="bi bi-journal-code"></i></span>
+              <h3 class="h5">Repositorios claros</h3>
+              <p class="muted mb-0">Centraliza codigo, README, ramas y actividad del proyecto en una vista facil de
+                explicar.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="feature-card reveal delay-1">
+              <span class="feature-icon"><i class="bi bi-record-circle"></i></span>
+              <h3 class="h5">Issues accionables</h3>
+              <p class="muted mb-0">Convierte bugs, mejoras y dudas en tareas con contexto, prioridad y responsables.
+              </p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="feature-card reveal delay-2">
+              <span class="feature-icon"><i class="bi bi-diagram-3"></i></span>
+              <h3 class="h5">Ramas sin miedo</h3>
+              <p class="muted mb-0">Muestra como aislar trabajo nuevo, revisar cambios y proteger la rama principal.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="feature-card reveal delay-3">
+              <span class="feature-icon"><i class="bi bi-people"></i></span>
+              <h3 class="h5">Equipos alineados</h3>
+              <p class="muted mb-0">Gestiona permisos, colaboradores y responsabilidades con una narrativa visual
+                simple.</p>
+            </article>
+          </div>
+        </div>
       </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <article class="audience-card audience-one reveal">
-            <h3 class="h4">Estudiantes fullstack</h3>
-            <p class="mb-0 text-white-50">Aprenden Git con pantallas reconocibles, acciones concretas y ejemplos de equipo.</p>
-          </article>
-        </div>
-        <div class="col-md-4">
-          <article class="audience-card audience-two reveal delay-1">
-            <h3 class="h4">Equipos junior</h3>
-            <p class="mb-0 text-white-50">Practican repositorios, issues, ramas y permisos antes de ir a produccion.</p>
-          </article>
-        </div>
-        <div class="col-md-4">
-          <article class="audience-card audience-three reveal delay-2">
-            <h3 class="h4">Mentores y docentes</h3>
-            <p class="mb-0 text-white-50">Presentan conceptos de colaboracion tecnica con una demo visual y navegable.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="precios" class="pricing section-pad">
-    <div class="container-xl">
-      <div class="row align-items-end g-4 mb-5">
-        <div class="col-lg-7">
-          <div class="section-kicker mb-2">Precios</div>
-          <h2 class="big-heading mb-0 reveal">Planes simples para aprender, presentar y escalar.</h2>
-        </div>
-        <div class="col-lg-5">
-          <p class="lead muted mb-0 reveal delay-1">Elige el nivel de demo que mejor encaje con tu equipo. Todos incluyen la experiencia base de repositorios, issues y ramas.</p>
-        </div>
-      </div>
-
-      <div class="row g-4 align-items-stretch mb-5">
-        <div class="col-lg-4">
-          <article class="pricing-card reveal">
-            <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
-              <div>
-                <h3 class="h4 mb-1">Starter</h3>
-                <p class="muted mb-0">Para estudiantes y primeras demos.</p>
+    <section id="flujo" class="workflow section-pad">
+      <div class="container-xl position-relative">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <div class="workflow-image reveal"></div>
+          </div>
+          <div class="col-lg-6">
+            <div class="section-kicker text-info mb-2">Flujo demo</div>
+            <h2 class="big-heading mb-4 reveal">Del primer commit a una entrega revisada.</h2>
+            <div class="d-grid gap-3">
+              <div class="step reveal">
+                <div class="fw-bold mb-1"><i class="bi bi-1-circle me-2 text-info"></i>Crea un repositorio</div>
+                <div class="text-white-50">Inicia el proyecto con nombre, descripcion, visibilidad y README.</div>
               </div>
-              <i class="bi bi-mortarboard fs-3 text-primary"></i>
-            </div>
-            <div class="price">$0</div>
-            <div class="price-note mb-4">por proyecto demo</div>
-            <ul class="feature-list mb-4">
-              <li><i class="bi bi-check-circle-fill"></i><span>Hasta 3 repositorios de practica</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Issues, commits y ramas basicas</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Listado de colaboradores simulado</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Landing y formularios incluidos</span></li>
-            </ul>
-            <a class="btn btn-outline-dark rounded-pill fw-bold w-100" href="account-create.html">Empezar gratis</a>
-          </article>
-        </div>
-
-        <div class="col-lg-4">
-          <article class="pricing-card featured reveal delay-1">
-            <span class="plan-badge mb-4"><i class="bi bi-stars"></i> Mas elegido</span>
-            <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
-              <div>
-                <h3 class="h4 mb-1">Team Lab</h3>
-                <p class="muted mb-0">Para clases, equipos junior y workshops.</p>
+              <div class="step reveal delay-1">
+                <div class="fw-bold mb-1"><i class="bi bi-2-circle me-2 text-info"></i>Abre un issue</div>
+                <div class="text-white-50">Registra el problema, asigna prioridad y deja claro el criterio de cierre.
+                </div>
               </div>
-              <i class="bi bi-people fs-3 text-info"></i>
-            </div>
-            <div class="price">$19</div>
-            <div class="price-note mb-4">por equipo al mes</div>
-            <ul class="feature-list mb-4">
-              <li><i class="bi bi-check-circle-fill"></i><span>Repositorios y issues ilimitados</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Busqueda e invitacion de colaboradores</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Comparacion de ramas y commits</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Vistas listas para presentar en clase</span></li>
-            </ul>
-            <a class="btn cta-primary w-100" href="account-create.html">Crear cuenta</a>
-          </article>
-        </div>
-
-        <div class="col-lg-4">
-          <article class="pricing-card reveal delay-2">
-            <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
-              <div>
-                <h3 class="h4 mb-1">Academy Pro</h3>
-                <p class="muted mb-0">Para instituciones y capacitaciones.</p>
+              <div class="step reveal delay-2">
+                <div class="fw-bold mb-1"><i class="bi bi-3-circle me-2 text-info"></i>Trabaja en una rama</div>
+                <div class="text-white-50">Separa cambios, revisa commits y prepara la integracion con main.</div>
               </div>
-              <i class="bi bi-building-check fs-3 text-primary"></i>
             </div>
-            <div class="price">$49</div>
-            <div class="price-note mb-4">por cohorte al mes</div>
-            <ul class="feature-list mb-4">
-              <li><i class="bi bi-check-circle-fill"></i><span>Multiples equipos y proyectos</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Permisos por rol y repositorio</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Plantillas para issues y commits</span></li>
-              <li><i class="bi bi-check-circle-fill"></i><span>Soporte para demos evaluativas</span></li>
-            </ul>
-            <a class="btn btn-outline-dark rounded-pill fw-bold w-100" href="login.html">Solicitar acceso</a>
-          </article>
+            <a class="btn cta-primary mt-4" href="repository-create.html"><i class="bi bi-journal-plus me-2"></i>Crear
+              primer repositorio</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="comparison-table reveal delay-2">
-        <div class="table-responsive">
-          <table class="table align-middle">
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th class="text-center">Starter</th>
-                <th class="text-center">Team Lab</th>
-                <th class="text-center">Academy Pro</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="fw-semibold">Repositorios demo</td>
-                <td class="text-center">3</td>
-                <td class="text-center">Ilimitados</td>
-                <td class="text-center">Ilimitados por cohorte</td>
-              </tr>
-              <tr>
-                <td class="fw-semibold">Issues y ramas</td>
-                <td class="text-center"><i class="bi bi-check-lg text-success"></i></td>
-                <td class="text-center"><i class="bi bi-check-lg text-success"></i></td>
-                <td class="text-center"><i class="bi bi-check-lg text-success"></i></td>
-              </tr>
-              <tr>
-                <td class="fw-semibold">Colaboradores</td>
-                <td class="text-center">3</td>
-                <td class="text-center">25</td>
-                <td class="text-center">Equipos multiples</td>
-              </tr>
-              <tr>
-                <td class="fw-semibold">Vistas de presentacion</td>
-                <td class="text-center">Basicas</td>
-                <td class="text-center">Completas</td>
-                <td class="text-center">Completas + plantillas</td>
-              </tr>
-            </tbody>
-          </table>
+    <section id="equipos" class="section-pad">
+      <div class="container-xl">
+        <div class="text-center mx-auto mb-5" style="max-width: 780px;">
+          <div class="section-kicker mb-2">Publico objetivo</div>
+          <h2 class="big-heading">Hecho para mostrar, vender y ensenar trabajo tecnico.</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="audience-card audience-one reveal">
+              <h3 class="h4">Estudiantes fullstack</h3>
+              <p class="mb-0 text-white-50">Aprenden Git con pantallas reconocibles, acciones concretas y ejemplos de
+                equipo.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="audience-card audience-two reveal delay-1">
+              <h3 class="h4">Equipos junior</h3>
+              <p class="mb-0 text-white-50">Practican repositorios, issues, ramas y permisos antes de ir a produccion.
+              </p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="audience-card audience-three reveal delay-2">
+              <h3 class="h4">Mentores y docentes</h3>
+              <p class="mb-0 text-white-50">Presentan conceptos de colaboracion tecnica con una demo visual y navegable.
+              </p>
+            </article>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="container-xl pb-5">
-    <div class="final-cta p-4 p-lg-5 reveal">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-8">
-          <div class="section-kicker text-warning mb-2">Empieza ahora</div>
-          <h2 class="display-font fw-bold mb-2">Tu equipo no necesita mas ruido. Necesita un flujo.</h2>
-          <p class="text-white-50 mb-0">Crea una cuenta, entra a la plataforma demo y recorre las vistas principales del producto.</p>
+    <section id="precios" class="pricing section-pad">
+      <div class="container-xl">
+        <div class="row align-items-end g-4 mb-5">
+          <div class="col-lg-7">
+            <div class="section-kicker mb-2">Precios</div>
+            <h2 class="big-heading mb-0 reveal">Planes simples para aprender, presentar y escalar.</h2>
+          </div>
+          <div class="col-lg-5">
+            <p class="lead muted mb-0 reveal delay-1">Elige el nivel de demo que mejor encaje con tu equipo. Todos
+              incluyen la experiencia base de repositorios, issues y ramas.</p>
+          </div>
         </div>
-        <div class="col-lg-4 text-lg-end">
-          <a class="btn cta-primary me-2 mb-2 mb-sm-0" href="account-create.html">Crear cuenta</a>
-          <a class="btn cta-secondary" href="login.html">Ingresar</a>
+
+        <div class="row g-4 align-items-stretch mb-5">
+          <div class="col-lg-4">
+            <article class="pricing-card reveal">
+              <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
+                <div>
+                  <h3 class="h4 mb-1">Starter</h3>
+                  <p class="muted mb-0">Para estudiantes y primeras demos.</p>
+                </div>
+                <i class="bi bi-mortarboard fs-3 text-primary"></i>
+              </div>
+              <div class="price">$0</div>
+              <div class="price-note mb-4">por proyecto demo</div>
+              <ul class="feature-list mb-4">
+                <li><i class="bi bi-check-circle-fill"></i><span>Hasta 3 repositorios de practica</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Issues, commits y ramas basicas</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Listado de colaboradores simulado</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Landing y formularios incluidos</span></li>
+              </ul>
+              <a class="btn btn-outline-dark rounded-pill fw-bold w-100" href="account-create.html">Empezar gratis</a>
+            </article>
+          </div>
+
+          <div class="col-lg-4">
+            <article class="pricing-card featured reveal delay-1">
+              <span class="plan-badge mb-4"><i class="bi bi-stars"></i> Mas elegido</span>
+              <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
+                <div>
+                  <h3 class="h4 mb-1">Team Lab</h3>
+                  <p class="muted mb-0">Para clases, equipos junior y workshops.</p>
+                </div>
+                <i class="bi bi-people fs-3 text-info"></i>
+              </div>
+              <div class="price">$19</div>
+              <div class="price-note mb-4">por equipo al mes</div>
+              <ul class="feature-list mb-4">
+                <li><i class="bi bi-check-circle-fill"></i><span>Repositorios y issues ilimitados</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Busqueda e invitacion de colaboradores</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Comparacion de ramas y commits</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Vistas listas para presentar en clase</span></li>
+              </ul>
+              <a class="btn cta-primary w-100" href="account-create.html">Crear cuenta</a>
+            </article>
+          </div>
+
+          <div class="col-lg-4">
+            <article class="pricing-card reveal delay-2">
+              <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
+                <div>
+                  <h3 class="h4 mb-1">Academy Pro</h3>
+                  <p class="muted mb-0">Para instituciones y capacitaciones.</p>
+                </div>
+                <i class="bi bi-building-check fs-3 text-primary"></i>
+              </div>
+              <div class="price">$49</div>
+              <div class="price-note mb-4">por cohorte al mes</div>
+              <ul class="feature-list mb-4">
+                <li><i class="bi bi-check-circle-fill"></i><span>Multiples equipos y proyectos</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Permisos por rol y repositorio</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Plantillas para issues y commits</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>Soporte para demos evaluativas</span></li>
+              </ul>
+              <a class="btn btn-outline-dark rounded-pill fw-bold w-100" href="login.html">Solicitar acceso</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="comparison-table reveal delay-2">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th class="text-center">Starter</th>
+                  <th class="text-center">Team Lab</th>
+                  <th class="text-center">Academy Pro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-semibold">Repositorios demo</td>
+                  <td class="text-center">3</td>
+                  <td class="text-center">Ilimitados</td>
+                  <td class="text-center">Ilimitados por cohorte</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Issues y ramas</td>
+                  <td class="text-center"><i class="bi bi-check-lg text-success"></i></td>
+                  <td class="text-center"><i class="bi bi-check-lg text-success"></i></td>
+                  <td class="text-center"><i class="bi bi-check-lg text-success"></i></td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Colaboradores</td>
+                  <td class="text-center">3</td>
+                  <td class="text-center">25</td>
+                  <td class="text-center">Equipos multiples</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Vistas de presentacion</td>
+                  <td class="text-center">Basicas</td>
+                  <td class="text-center">Completas</td>
+                  <td class="text-center">Completas + plantillas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="py-4 border-top">
-    <div class="container-xl d-flex flex-wrap justify-content-between gap-2 small muted">
-      <span>GitFlow Studio Demo</span>
-      <span>Repositorios · Issues · Ramas · Commits · Colaboradores</span>
-    </div>
-  </footer>
+    <section class="container-xl pb-5">
+      <div class="final-cta p-4 p-lg-5 reveal">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <div class="section-kicker text-warning mb-2">Empieza ahora</div>
+            <h2 class="display-font fw-bold mb-2">Tu equipo no necesita mas ruido. Necesita un flujo.</h2>
+            <p class="text-white-50 mb-0">Crea una cuenta, entra a la plataforma demo y recorre las vistas principales
+              del producto.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="btn cta-primary me-2 mb-2 mb-sm-0" href="account-create.html">Crear cuenta</a>
+            <a class="btn cta-secondary" href="login.html">Ingresar</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const revealItems = document.querySelectorAll(".reveal");
+    <%- include ('partials/footer') %>
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.14 });
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+        const revealItems = document.querySelectorAll(".reveal");
 
-    revealItems.forEach((item) => revealObserver.observe(item));
-  </script>
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+      </script>
 </body>
+
 </html>
