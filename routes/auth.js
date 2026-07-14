@@ -3,12 +3,14 @@ var router = express.Router();
 var registerController = require('../controllers/RegisterController');
 var loginController = require('../controllers/loginController');
 var welcomeController = require('../controllers/WelcomeController');
+var { validateLogin } = require('./../middlewares/login');
+var { handleValidation } = require('./../middlewares/shared');
 
 router.get('/register', registerController.create);
 router.post('/register', registerController.store);
 
 router.get('/login', loginController.create);
-router.post('/login', loginController.store);
+router.post('/login', validateLogin, handleValidation, loginController.store);
 
 router.get('/welcome', welcomeController.index);
 
