@@ -7,7 +7,11 @@ function handleValidation(req, res, next) {
         return next();
     }
 
-    return res.send({errors: result.array()});
+    req.session.errors = result.array();
+
+    return res.redirect('back');
 }
 
-module.exports = handleValidation;
+module.exports = {
+    handleValidation
+};

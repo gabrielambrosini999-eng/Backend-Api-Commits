@@ -17,6 +17,13 @@
           <h1 class="h3 mb-1">Ingresar</h1>
           <p class="muted mb-0">Accede para administrar repositorios, commits e issues.</p>
         </div>
+
+        <% for (let i=0; i < errors.length; i++) { %>
+          <div class="text-danger">
+            <%= errors[i].msg %>
+          </div>
+        <% } %>
+
         <form class="form-shell p-4" method="POST" action="/login">
           <div class="mb-3">
             <label class="form-label fw-semibold" for="loginEmail">Email o usuario</label>
