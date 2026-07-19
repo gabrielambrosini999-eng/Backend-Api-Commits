@@ -1,19 +1,25 @@
 class LoginController {
     static create(req, res) {
+        const errors = req.session.errors || [];
+        req.session.errors = null;
+
         res.render('login', {
-            errors : req.session.errors
+            errors: errors
         });
     }
 
     static store(req, res) {
-        // crear el identificador de la sesión
-        const sessionId = Date.now();
+        req.session.user = {
+            email: req.body.email
+        };
 
-        // se envía mediante una cookie
-        res.cookie('session_id', sessionId, {maxAge: 600000});
-        
-        // se responde con la redirección
         res.redirect('/welcome');
+    }
+
+    static destroy(req, res) {
+        req.session.destroy(function () {
+            res.redirect('/login');
+        });
     }
 }
 
