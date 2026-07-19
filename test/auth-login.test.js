@@ -347,3 +347,26 @@ test('LoginController.store extiende la sesion cuando remember esta activo', () 
   assert.deepEqual(req.session.user, { email: 'persona@example.com' });
   assert.equal(res.location, '/welcome');
 });
+
+test('LoginController.destroy envia errores al middleware de errores', () => {
+  const sessionError = new Error('No se pudo destruir la sesion');
+  const req = {
+    session: {
+      destroy(callback) {
+        callback(sessionError);
+      },
+    },
+  };
+  const res = {
+    redirect() {
+      throw new Error('No deberia redirigir si destroy falla');
+    },
+  };
+  let receivedError = null;
+
+  LoginController.destroy(req, res, function (error) {
+    receivedError = error;
+  });
+
+  assert.equal(receivedError, sessionError);
+});

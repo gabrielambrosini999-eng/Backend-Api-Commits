@@ -38,8 +38,12 @@ class LoginController {
         });
     }
 
-    static destroy(req, res) {
-        req.session.destroy(function () {
+    static destroy(req, res, next) {
+        req.session.destroy(function (error) {
+            if (error) {
+                return next(error);
+            }
+
             res.redirect('/login');
         });
     }
