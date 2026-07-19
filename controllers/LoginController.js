@@ -17,16 +17,25 @@ class LoginController {
         });
     }
 
-    static store(req, res) {
-        if (req.body.remember) {
-            req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7;
-        }
+    static store(req, res, next) {
+        const email = req.body.email;
+        const remember = req.body.remember;
 
-        req.session.user = {
-            email: req.body.email
-        };
+        req.session.regenerate(function (error) {
+            if (error) {
+                return next(error);
+            }
 
-        res.redirect('/welcome');
+            if (remember) {
+                req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7;
+            }
+
+            req.session.user = {
+                email: email
+            };
+
+            res.redirect('/welcome');
+        });
     }
 
     static destroy(req, res) {

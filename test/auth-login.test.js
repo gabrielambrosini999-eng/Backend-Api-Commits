@@ -329,6 +329,9 @@ test('LoginController.store extiende la sesion cuando remember esta activo', () 
       cookie: {
         maxAge: 600000,
       },
+      regenerate(callback) {
+        callback();
+      },
     },
   };
   const res = {
