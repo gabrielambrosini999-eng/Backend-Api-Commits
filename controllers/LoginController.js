@@ -1,6 +1,6 @@
 class LoginController {
     static create(req, res) {
-        const errors = req.session.errors || [];
+        const errors = req.session.errors || {};
         req.session.errors = null;
 
         res.render('login', {

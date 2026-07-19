@@ -7,7 +7,7 @@ function handleValidation(req, res, next) {
         return next();
     }
 
-    req.session.errors = result.array();
+    req.session.errors = result.mapped();
 
     return res.redirect('back');
 }

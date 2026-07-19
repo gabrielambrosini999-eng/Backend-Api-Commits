@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const http = require('node:http');
 
 const app = require('../app');
-const { validateLogin, handleValidation } = require('../middlewares/login');
+const { validateLogin } = require('../middlewares/login');
+const { handleValidation } = require('../middlewares/shared');
 
 function startServer() {
   return new Promise((resolve, reject) => {
@@ -113,17 +114,14 @@ test('POST /login con email invalido responde errores de validacion', async () =
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Content-Length': Buffer.byteLength(body),
+          Referer: '/login',
         },
       },
       body
     );
 
-    const payload = JSON.parse(response.body);
-
-    assert.equal(response.statusCode, 200);
-    assert.ok(Array.isArray(payload.errors));
-    assert.ok(payload.errors.some((error) => error.path === 'email'));
-    assert.notEqual(response.headers.location, '/welcome');
+    assert.equal(response.statusCode, 302);
+    assert.equal(response.headers.location, '/login');
   } finally {
     await closeServer(server);
   }
@@ -152,6 +150,97 @@ test('POST /login con email valido continua el flujo hacia /welcome', async () =
 
     assert.equal(response.statusCode, 302);
     assert.equal(response.headers.location, '/welcome');
+    assert.ok(response.headers['set-cookie'].some((cookie) => cookie.startsWith('connect.sid=')));
+  } finally {
+    await closeServer(server);
+  }
+});
+
+test('GET /welcome sin sesion redirige al login', async () => {
+  const server = await startServer();
+
+  try {
+    const response = await request(server, { method: 'GET', path: '/welcome' });
+
+    assert.equal(response.statusCode, 302);
+    assert.equal(response.headers.location, '/login');
+  } finally {
+    await closeServer(server);
+  }
+});
+
+test('GET /welcome con sesion permite ingresar', async () => {
+  const server = await startServer();
+  const body = new URLSearchParams({
+    email: 'persona@example.com',
+    password: 'secret1',
+  }).toString();
+
+  try {
+    const loginResponse = await request(
+      server,
+      {
+        method: 'POST',
+        path: '/login',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': Buffer.byteLength(body),
+        },
+      },
+      body
+    );
+    const cookie = loginResponse.headers['set-cookie'][0].split(';')[0];
+    const response = await request(
+      server,
+      {
+        method: 'GET',
+        path: '/welcome',
+        headers: {
+          Cookie: cookie,
+        },
+      }
+    );
+
+    assert.equal(response.statusCode, 200);
+  } finally {
+    await closeServer(server);
+  }
+});
+
+test('GET /logout destruye la sesion y redirige al login', async () => {
+  const server = await startServer();
+  const body = new URLSearchParams({
+    email: 'persona@example.com',
+    password: 'secret1',
+  }).toString();
+
+  try {
+    const loginResponse = await request(
+      server,
+      {
+        method: 'POST',
+        path: '/login',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': Buffer.byteLength(body),
+        },
+      },
+      body
+    );
+    const cookie = loginResponse.headers['set-cookie'][0].split(';')[0];
+    const response = await request(
+      server,
+      {
+        method: 'GET',
+        path: '/logout',
+        headers: {
+          Cookie: cookie,
+        },
+      }
+    );
+
+    assert.equal(response.statusCode, 302);
+    assert.equal(response.headers.location, '/login');
   } finally {
     await closeServer(server);
   }
@@ -179,16 +268,19 @@ test('handleValidation llama next sin enviar respuesta cuando no hay errores', a
 });
 
 test('handleValidation envia errores y no llama next cuando hay errores', async () => {
-  const req = { body: { email: 'usuario-invalido', password: 'secret1' } };
+  const req = {
+    body: { email: 'usuario-invalido', password: 'secret1' },
+    session: {},
+  };
   const calls = {
     next: 0,
-    send: 0,
-    payload: null,
+    redirect: 0,
+    location: null,
   };
   const res = {
-    send(payload) {
-      calls.send += 1;
-      calls.payload = payload;
+    redirect(location) {
+      calls.redirect += 1;
+      calls.location = location;
     },
   };
 
@@ -198,7 +290,28 @@ test('handleValidation envia errores y no llama next cuando hay errores', async 
   });
 
   assert.equal(calls.next, 0);
-  assert.equal(calls.send, 1);
-  assert.ok(Array.isArray(calls.payload.errors));
-  assert.ok(calls.payload.errors.some((error) => error.path === 'email'));
+  assert.equal(calls.redirect, 1);
+  assert.equal(calls.location, 'back');
+  assert.equal(req.session.errors.email.path, 'email');
+  assert.equal(req.session.errors.email.msg, 'El email no es valido');
+});
+
+test('validateLogin devuelve solo el primer error por campo', async () => {
+  const req = {
+    body: {
+      email: '',
+      password: '',
+    },
+  };
+
+  await runLoginValidators(req);
+
+  const errors = require('express-validator').validationResult(req).array();
+  const emailErrors = errors.filter((error) => error.path === 'email');
+  const passwordErrors = errors.filter((error) => error.path === 'password');
+
+  assert.equal(emailErrors.length, 1);
+  assert.equal(emailErrors[0].msg, 'Requerido');
+  assert.equal(passwordErrors.length, 1);
+  assert.equal(passwordErrors[0].msg, 'Requerido');
 });

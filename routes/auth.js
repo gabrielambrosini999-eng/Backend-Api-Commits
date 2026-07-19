@@ -18,6 +18,8 @@ router.post('/login',
 
 router.get('/welcome', isLogged, welcomeController.index);
 
+router.get('/logout', loginController.destroy);
+
 router.get('/password/forget', function (req, res, next) {
   res.render('password-change');
 });
