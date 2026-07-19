@@ -8,6 +8,8 @@ function handleValidation(req, res, next) {
     }
 
     req.session.errors = result.mapped();
+    req.session.oldData = {...req.body};
+    delete req.session.oldData.password;
 
     return res.redirect('back');
 }

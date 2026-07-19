@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const http = require('node:http');
 
 const app = require('../app');
+const LoginController = require('../controllers/LoginController');
 const { validateLogin } = require('../middlewares/login');
 const { handleValidation } = require('../middlewares/shared');
 
@@ -294,6 +295,8 @@ test('handleValidation envia errores y no llama next cuando hay errores', async 
   assert.equal(calls.location, 'back');
   assert.equal(req.session.errors.email.path, 'email');
   assert.equal(req.session.errors.email.msg, 'El email no es valido');
+  assert.equal(req.session.oldData.email, 'usuario-invalido');
+  assert.equal(req.session.oldData.password, undefined);
 });
 
 test('validateLogin devuelve solo el primer error por campo', async () => {
@@ -314,4 +317,30 @@ test('validateLogin devuelve solo el primer error por campo', async () => {
   assert.equal(emailErrors[0].msg, 'Requerido');
   assert.equal(passwordErrors.length, 1);
   assert.equal(passwordErrors[0].msg, 'Requerido');
+});
+
+test('LoginController.store extiende la sesion cuando remember esta activo', () => {
+  const req = {
+    body: {
+      email: 'persona@example.com',
+      remember: '1',
+    },
+    session: {
+      cookie: {
+        maxAge: 600000,
+      },
+    },
+  };
+  const res = {
+    location: null,
+    redirect(location) {
+      this.location = location;
+    },
+  };
+
+  LoginController.store(req, res);
+
+  assert.equal(req.session.cookie.maxAge, 1000 * 60 * 60 * 24 * 7);
+  assert.deepEqual(req.session.user, { email: 'persona@example.com' });
+  assert.equal(res.location, '/welcome');
 });

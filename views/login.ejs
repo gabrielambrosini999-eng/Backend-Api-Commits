@@ -21,7 +21,7 @@
         <form class="form-shell p-4" method="POST" action="/login">
           <div class="mb-3">
             <label class="form-label fw-semibold" for="loginEmail">Email o usuario</label>
-            <input class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="loginEmail" placeholder="ana-dev" name="email">
+            <input class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="loginEmail" placeholder="ana-dev" name="email" value="<%= old('email') %>">
             <% if (errors.email) { %>
               <div class="invalid-feedback">
                 <%= errors.email.msg %>
@@ -43,7 +43,7 @@
             <% } %>
           </div>
           <div class="form-check mb-4">
-            <input class="form-check-input" type="checkbox" id="remember">
+            <input class="form-check-input" type="checkbox" id="remember" name="remember" value="1" <%= old('remember') ? 'checked' : '' %>>
             <label class="form-check-label small" for="remember">Mantener sesion iniciada</label>
           </div>
           <button class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right me-1"></i>Ingresar</button>
