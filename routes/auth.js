@@ -3,16 +3,22 @@ var router = express.Router();
 var registerController = require('../controllers/RegisterController');
 var loginController = require('../controllers/loginController');
 var welcomeController = require('../controllers/WelcomeController');
-var { validateLogin } = require('./../middlewares/login');
+var { validateLogin, isLogged } = require('./../middlewares/login');
 var { handleValidation } = require('./../middlewares/shared');
 
 router.get('/register', registerController.create);
 router.post('/register', registerController.store);
 
 router.get('/login', loginController.create);
-router.post('/login', validateLogin, handleValidation, loginController.store);
+router.post('/login', 
+  validateLogin(), 
+  handleValidation,
+  loginController.store
+);
 
-router.get('/welcome', welcomeController.index);
+router.get('/welcome', isLogged, welcomeController.index);
+
+router.get('/logout', isLogged, loginController.destroy);
 
 router.get('/password/forget', function (req, res, next) {
   res.render('password-change');
