@@ -16,6 +16,11 @@ class RepositoryController {
             repository
         });
     }
+
+    static settings(req, res, next) {
+
+        res.render('repository-settings');
+    }
 }
 
 module.exports = RepositoryController;
