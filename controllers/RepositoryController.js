@@ -1,15 +1,15 @@
 class RepositoryController {
-    
+
     static index(req, res, next) {
 
         const repository = {
             owner: "Icaro",
             name: "Modulo 4 - Backend",
             description: "Repositorio del proyecto grupal",
-            visibility: "public",
+            visibility: "Publico",
             language: "JavaScript",
-            stars: "4.5",
-            updateAt: "2 de agosto de 2026"
+            stars: 4.5,
+            updatedAt: "2 de agosto de 2026"
         };
 
         res.render('repository', {
