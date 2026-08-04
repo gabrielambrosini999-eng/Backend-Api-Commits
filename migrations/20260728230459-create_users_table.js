@@ -19,11 +19,11 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
-      created_at: {
+      created_at: { // createdAt
         type: Sequelize.DATE, // TIMESTAMP
         allowNull: false,
       },
-      updated_at: {
+      updated_at: { // updatedAt
         type: Sequelize.DATE, // TIMESTAMP
         allowNull: true,
       },

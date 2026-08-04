@@ -8,7 +8,7 @@ function validateLogin() {
 
         body('password')
             .notEmpty().withMessage('Requerido').bail()
-            .isLength({min: 6, max: 8}).withMessage('Ingrese 6 a 8 caracteres'),
+            .isLength({min: 6, max: 12}).withMessage('Ingrese 6 a 12 caracteres'),
     ]
 }
 

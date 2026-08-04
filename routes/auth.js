@@ -7,11 +7,15 @@ var { validateLogin, isLogged } = require('./../middlewares/login');
 var { handleValidation } = require('./../middlewares/shared');
 
 router.get('/register', registerController.create);
-router.post('/register', registerController.store);
+
+router.post('/register',
+  validateLogin(),
+  handleValidation,
+  registerController.store);
 
 router.get('/login', loginController.create);
-router.post('/login', 
-  validateLogin(), 
+router.post('/login',
+  validateLogin(),
   handleValidation,
   loginController.store
 );
