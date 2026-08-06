@@ -6,7 +6,7 @@ class RepositoryController {
             owner: "Icaro",
             name: "Modulo 4 - Backend",
             description: "Repositorio del proyecto grupal",
-            visibility: "Publico",
+            visibility: "Public",
             language: "JavaScript",
             stars: 4.5,
             updatedAt: "2 de agosto de 2026"
@@ -17,9 +17,29 @@ class RepositoryController {
         });
     }
 
-    static settings(req, res, next) {
+    static create(req, res) {
+        const errors = req.session.errors || {};
+        const oldData = req.session.oldData || {};
+        req.session.errors = null;
+        req.session.oldData = null;
 
-        res.render('repository-settings');
+        res.render('repository-settings', {
+            errors: errors,
+            old: function (field, defaultValue) {
+                if (Object.prototype.hasOwnProperty.call(oldData, field)) {
+                    return oldData[field];
+                }
+                return defaultValue || '';
+            }
+        });
+    }
+
+    static store(req, res, next) {
+        const name = req.body.name;
+        const description = req.body.description;
+        const visibility = req.body.visibility;
+
+        res.redirect('/repository');
     }
 }
 
