@@ -10,6 +10,7 @@ var filesRouter = require('./routes/files');
 var authRouter = require('./routes/auth');
 var usersRouter = require('./routes/users');
 var orgsRouter = require('./routes/organizations');
+var repositoryRouter = require('./routes/repositories');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/users', usersRouter);
 app.use('/', authRouter);
 app.use('/', filesRouter);
 app.use('/', orgsRouter);
+app.use('/', repositoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -96,7 +96,7 @@
 <body>
 <nav class="topbar navbar navbar-expand-lg">
     <div class="container-xl">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold" href="repository.html">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold" href="/repository">
             <span class="brand-mark"><i class="bi bi-git"></i></span>
             Git Demo
         </a>
@@ -105,7 +105,7 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ms-auto small fw-medium">
-                <li class="nav-item"><a class="nav-link active" href="repository.html">Repository</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/repository">Repository</a></li>
                 <li class="nav-item"><a class="nav-link" href="issue.html">Issue</a></li>
                 <li class="nav-item"><a class="nav-link" href="branch.html">Branch</a></li>
                 <li class="nav-item"><a class="nav-link" href="commit.html">Commit</a></li>
@@ -120,11 +120,15 @@
         <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
             <div>
                 <div class="repo-title h3 mb-1">
-                    <i class="bi bi-journal-code me-2 muted"></i><a href="#">equipo/demo-git</a>
-                    <span class="badge text-bg-light border fw-normal ms-2">Public</span>
+                    <i class="bi bi-journal-code me-2 muted"></i>
+                        <a href="#">
+                            <%= repository.owner %>/<%= repository.name %>
+                        </a>
+                    <span class="badge text-bg-light border fw-normal ms-2"><%= repository.visibility %></span>
                 </div>
-                <p class="muted mb-3">Un repositorio es el espacio donde Git guarda archivos, historial, ramas y
-                    colaboracion del proyecto.</p>
+                <p class="muted mb-3">
+                    <%= repository.description  %>
+                </p>
                 <div class="d-flex flex-wrap gap-2">
                     <span class="topic-pill">git</span>
                     <span class="topic-pill">version-control</span>
@@ -132,7 +136,9 @@
                 </div>
             </div>
             <div class="d-flex gap-2">
-                <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-star me-1"></i>Star</button>
+                <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-star me-1"></i>
+                    <%= repository.stars %>
+                </button>
                 <button class="btn btn-success btn-sm"><i class="bi bi-code-slash me-1"></i>Code</button>
             </div>
         </div>
@@ -179,6 +185,14 @@
                 <h2 class="h6">Que contiene un repositorio</h2>
                 <p class="small muted mb-0">Incluye el arbol de archivos, el historial de cambios, metadatos internos en
                     <span class="code-line">.git</span>, configuracion remota y referencias a ramas o etiquetas.</p>
+            </div>
+            <div class="panel p-3 mb-3">
+                <h2 class="h6">Lenguaje principal</h2>
+                <p class="small muted mb-0"><%= repository.language %></p>
+            </div>
+            <div class="panel p-3 mb-3">
+                <h2 class="h6">Última actualización</h2>
+                <p class="small muted mb-0"><%= repository.updatedAt %></p>
             </div>
             <div class="panel p-3">
                 <h2 class="h6">Flujo basico</h2>
