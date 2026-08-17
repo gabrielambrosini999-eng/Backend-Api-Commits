@@ -1,5 +1,5 @@
-const { User } = require('./../models')
-const { hashSync } = require('bcryptjs');
+const {User} = require('./../models')
+const {hashSync} = require('bcryptjs');
 
 class RegisterController {
     static create(req, res, next) {

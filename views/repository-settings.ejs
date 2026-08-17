@@ -22,7 +22,7 @@
         <p class="muted">Configuracion general del repositorio.</p>
         <div class="row g-3">
             <section class="col-lg-8">
-                <form class="form-shell p-4" action="/repository/settings" method="post">
+                <form class="form-shell p-4" action="<%= action %>" method="post">
                     <label class="form-label fw-semibold">Nombre</label>
                     <input class="form-control mb-3" value="<%= old('name', 'demo-git') %>" name="name">
                     <% if (errors.name) { %>

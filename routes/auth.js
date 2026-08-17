@@ -18,7 +18,6 @@ router.get('/login', loginController.create);
 router.post('/login',
   validateLogin(),
   handleValidation,
-  loginController.store
 );
 
 router.get('/welcome', isLogged, welcomeController.index);
