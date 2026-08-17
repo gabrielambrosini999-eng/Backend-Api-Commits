@@ -13,6 +13,11 @@ var orgsRouter = require('./routes/organizations');
 var repositoryRouter = require('./routes/repositories');
 
 var app = express();
+var sessionSecret = process.env.SESSION_SECRET;
+
+if (!sessionSecret) {
+  throw new Error('SESSION_SECRET no esta configurado');
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
-  secret : 'cualquiervalor1234567890',
+  secret : sessionSecret,
   resave : false,
   saveUninitialized : false,
   cookie : {
