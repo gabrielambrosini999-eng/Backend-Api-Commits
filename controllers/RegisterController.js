@@ -27,7 +27,10 @@ class RegisterController {
             email: req.body.email,
             password: pwd,
         }).then(user => {
-            res.send(user);
+            res.status(201).send({
+                id: user.id,
+                email: user.email,
+            });
         }).catch(err => {
             res.send(err)
         })
