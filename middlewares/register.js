@@ -9,7 +9,7 @@ function validateRegister() {
             .custom(async value => {
                 const user = await User.findOne({
                     where: {
-                        email: value
+                        email: value.trim().toLowerCase()
                     }
                 });
 
