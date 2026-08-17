@@ -272,6 +272,7 @@ test('handleValidation envia errores y no llama next cuando hay errores', async 
   const req = {
     body: { email: 'usuario-invalido', password: 'secret1' },
     session: {},
+    originalUrl: '/login',
   };
   const calls = {
     next: 0,
@@ -292,7 +293,7 @@ test('handleValidation envia errores y no llama next cuando hay errores', async 
 
   assert.equal(calls.next, 0);
   assert.equal(calls.redirect, 1);
-  assert.equal(calls.location, 'back');
+  assert.equal(calls.location, '/login');
   assert.equal(req.session.errors.email.path, 'email');
   assert.equal(req.session.errors.email.msg, 'El email no es valido');
   assert.equal(req.session.oldData.email, 'usuario-invalido');

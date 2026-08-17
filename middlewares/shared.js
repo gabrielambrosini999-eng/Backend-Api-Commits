@@ -11,7 +11,11 @@ function handleValidation(req, res, next) {
     req.session.oldData = {...req.body};
     delete req.session.oldData.password;
 
-    return res.redirect('back');
+    const referrer = typeof req.get === 'function'
+        ? req.get('Referrer') || req.get('Referer')
+        : null;
+
+    return res.redirect(referrer || req.originalUrl || '/');
 }
 
 module.exports = {
