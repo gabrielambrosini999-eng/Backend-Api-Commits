@@ -14,6 +14,7 @@ var repositoryRouter = require('./routes/repositories');
 
 var app = express();
 var sessionSecret = process.env.SESSION_SECRET;
+var isProduction = process.env.NODE_ENV === 'production';
 
 if (!sessionSecret) {
   throw new Error('SESSION_SECRET no esta configurado');
@@ -33,7 +34,7 @@ app.use(session({
   saveUninitialized : false,
   cookie : {
     httpOnly: true,
-    secure: false,
+    secure: isProduction,
     maxAge : 600000,
   }
 }))
