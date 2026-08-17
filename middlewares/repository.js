@@ -6,7 +6,7 @@ function validateRepositorySettings() {
             .notEmpty().withMessage('Requerido').bail(),
 
         body('visibility')
-            .isIn(['Public', 'Private']).withMessage('La visibilidad no es válida').bail(),
+            .isIn(['Public', 'Private']).withMessage('La visibilidad no es valida').bail(),
     ];
 }
 
