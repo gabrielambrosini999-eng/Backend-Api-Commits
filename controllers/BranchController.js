@@ -6,7 +6,7 @@ class BranchController {
         const branches = [
             {
                 name: 'rama',
-                lastCommit: 'Rama predeterminada · protegida',
+                lastCommit: 'Rama predeterminada - protegida',
                 author: 'Juan',
                 date: '2026-07-20 14:30',
                 isProtected: true
