@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var registerController = require('../controllers/RegisterController');
-var loginController = require('../controllers/loginController');
+var loginController = require('../controllers/LoginController');
 var welcomeController = require('../controllers/WelcomeController');
 var { validateLogin, isLogged } = require('./../middlewares/login');
 var { handleValidation } = require('./../middlewares/shared');
