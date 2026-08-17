@@ -1,7 +1,10 @@
 class RepositoryController {
-
     static index(req, res, next) {
+        const repos = [];
+        return res.json(repos);
+    }
 
+    static show(req, res, next) {
         const repository = {
             owner: "Icaro",
             name: "Modulo 4 - Backend",
@@ -24,6 +27,7 @@ class RepositoryController {
         req.session.oldData = null;
 
         res.render('repository-settings', {
+            action : req.url,
             errors: errors,
             old: function (field, defaultValue) {
                 if (Object.prototype.hasOwnProperty.call(oldData, field)) {
@@ -39,7 +43,7 @@ class RepositoryController {
         const description = req.body.description;
         const visibility = req.body.visibility;
 
-        res.redirect('/repository');
+        res.redirect('/repositories/' + req.params.id + '/settings');
     }
 }
 

@@ -4,9 +4,10 @@ var RepositoryController = require('../controllers/RepositoryController');
 var { validateRepositorySettings } = require('./../middlewares/repository');
 var { handleValidation } = require('./../middlewares/shared');
 
-router.get('/repository', RepositoryController.index);
-
-router.get('/repository/settings', RepositoryController.create);
-router.post('/repository/settings', validateRepositorySettings(), handleValidation, RepositoryController.store);
+router.get('/repositories', RepositoryController.index);
+router.get('/repositories/new', RepositoryController.create);
+router.get('/repositories/:id', RepositoryController.show);
+router.get('/repositories/:id/settings', RepositoryController.create);
+router.post('/repositories/:id/settings', validateRepositorySettings(), handleValidation, RepositoryController.store);
 
 module.exports = router;

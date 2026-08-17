@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var orgsRouter = require('./routes/organizations');
 var repositoryRouter = require('./routes/repositories');
 
+var ramasRouter = require('./routes/ramas');
 var app = express();
 var sessionSecret = process.env.SESSION_SECRET;
 var isProduction = process.env.NODE_ENV === 'production';
@@ -46,6 +47,9 @@ app.use('/', authRouter);
 app.use('/', filesRouter);
 app.use('/', orgsRouter);
 app.use('/', repositoryRouter);
+
+// defino la ruta de ramas
+app.use('/', ramasRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
