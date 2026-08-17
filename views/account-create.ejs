@@ -20,25 +20,35 @@
         <form class="form-shell p-4" method="POST" action="/register">
           <div class="mb-3">
             <label class="form-label fw-semibold" for="name">Nombre completo</label>
-            <input class="form-control" id="name" placeholder="Ana Rodriguez" name="fullname">
+            <input class="form-control" id="name" placeholder="Ana Rodriguez" name="fullname" value="<%= old('fullname') %>">
           </div>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="username">Usuario</label>
             <div class="input-group">
               <span class="input-group-text">@</span>
-              <input class="form-control" id="username" placeholder="ana-dev" name="username">
+              <input class="form-control" id="username" placeholder="ana-dev" name="username" value="<%= old('username') %>">
             </div>
           </div>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="email">Email</label>
-            <input class="form-control" id="email" type="email" placeholder="ana@example.com" name="email">
+            <input class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email" type="email" placeholder="ana@example.com" name="email" value="<%= old('email') %>">
+            <% if (errors.email) { %>
+              <div class="invalid-feedback">
+                <%= errors.email.msg %>
+              </div>
+            <% } %>
           </div>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="password">Contrasena</label>
-            <input class="form-control" id="password" type="password" placeholder="Minimo 8 caracteres" name="password">
+            <input class="form-control <%= errors.password ? 'is-invalid' : '' %>" id="password" type="password" placeholder="Minimo 8 caracteres" name="password">
+            <% if (errors.password) { %>
+              <div class="invalid-feedback">
+                <%= errors.password.msg %>
+              </div>
+            <% } %>
           </div>
           <div class="form-check mb-4">
-            <input class="form-check-input" type="checkbox" id="terms" name="agree">
+            <input class="form-check-input" type="checkbox" id="terms" name="agree" <%= old('agree') ? 'checked' : '' %>>
             <label class="form-check-label small" for="terms">Acepto las reglas de colaboracion del proyecto.</label>
           </div>
           <button class="btn btn-success w-100"><i class="bi bi-person-plus me-1"></i>Crear cuenta</button>
