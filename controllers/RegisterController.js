@@ -32,7 +32,7 @@ class RegisterController {
                 email: user.email,
             });
         }).catch(err => {
-            res.send(err)
+            next(err);
         })
     }
 }
