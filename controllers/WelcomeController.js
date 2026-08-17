@@ -1,6 +1,6 @@
 class WelcomeController {
     static index(req, res) {
-        res.render('user-profile');
+        res.render('organization-profile');
     }
 }
 

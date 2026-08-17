@@ -2,6 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/organizations', function(req, res, next) {
+    const organizations = [
+        {id: 1, name : "Icaro"},
+        {id: 2, name : "Icaro"},
+        {id: 3, name : "Icaro"},
+        {id: 4, name : "Icaro"},
+    ];
+
   res.send('respond with a resource');
 });
 
