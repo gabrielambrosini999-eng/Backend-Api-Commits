@@ -96,7 +96,7 @@
 <body>
 <nav class="topbar navbar navbar-expand-lg">
     <div class="container-xl">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold" href="/repository">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold" href="/repositories/<%= repository.id %>">
             <span class="brand-mark"><i class="bi bi-git"></i></span>
             Git Demo
         </a>
@@ -105,7 +105,7 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ms-auto small fw-medium">
-                <li class="nav-item"><a class="nav-link active" href="/repository">Repository</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/repositories/<%= repository.id %>">Repository</a></li>
                 <li class="nav-item"><a class="nav-link" href="issue.html">Issue</a></li>
                 <li class="nav-item"><a class="nav-link" href="branch.html">Branch</a></li>
                 <li class="nav-item"><a class="nav-link" href="commit.html">Commit</a></li>
