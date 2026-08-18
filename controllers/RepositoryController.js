@@ -6,6 +6,7 @@ class RepositoryController {
 
     static show(req, res, next) {
         const repository = {
+            id: req.params.id,
             owner: "Icaro",
             name: "Modulo 4 - Backend",
             description: "Repositorio del proyecto grupal",
