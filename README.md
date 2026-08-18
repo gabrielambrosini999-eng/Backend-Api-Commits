@@ -34,3 +34,16 @@ Proyecto de backend del modulo 4 de la diplomatura de fullstack de ICARO.
 - Code Review
 - Aprobación
 - Merge a main
+
+
+
+#### Participantes
+
+- [Carla Lopez](https://github.com/carlalopeziribe-rp)
+- [Gabriel Ambrosini](https://github.com/juanyg77)
+- [Juan García](https://github.com/juanyg77)
+- [Matías Torres](https://github.com/gal-go)
+- [Lucas Montenegro](https://github.com/gabrielambrosini999-eng)
+- [Ramiro Amaya](https://github.com/ramiroleoamaya)
+- [Romina Garcia](https://github.com/rominagr)
+- [Sergio Luengo](https://github.com/systemdesarrollo)
