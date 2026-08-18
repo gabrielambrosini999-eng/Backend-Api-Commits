@@ -29,6 +29,7 @@ class RepositoryController {
 
         res.render('repository-settings', {
             action : req.url,
+            repositoryId: req.params.id || 1,
             errors: errors,
             old: function (field, defaultValue) {
                 if (Object.prototype.hasOwnProperty.call(oldData, field)) {
