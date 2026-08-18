@@ -5,12 +5,13 @@ class RepositoryController {
     }
 
     static show(req, res, next) {
+        const repositoryData = req.session.repositoryData || {};
         const repository = {
             id: req.params.id,
             owner: "Icaro",
-            name: "Modulo 4 - Backend",
-            description: "Repositorio del proyecto grupal",
-            visibility: "Public",
+            name: repositoryData.name || "Modulo 4 - Backend",
+            description: repositoryData.description || "Repositorio del proyecto grupal",
+            visibility: repositoryData.visibility || "Public",
             language: "JavaScript",
             stars: 4.5,
             updatedAt: "2 de agosto de 2026"
@@ -23,12 +24,13 @@ class RepositoryController {
 
     static create(req, res) {
         const errors = req.session.errors || {};
-        const oldData = req.session.oldData || {};
+        const oldData = req.session.oldData || req.session.repositoryData || {};
         req.session.errors = null;
         req.session.oldData = null;
 
         res.render('repository-settings', {
             action : req.url,
+            repositoryId: req.params.id || 1,
             errors: errors,
             old: function (field, defaultValue) {
                 if (Object.prototype.hasOwnProperty.call(oldData, field)) {
@@ -40,11 +42,13 @@ class RepositoryController {
     }
 
     static store(req, res, next) {
-        const name = req.body.name;
-        const description = req.body.description;
-        const visibility = req.body.visibility;
+        req.session.repositoryData = {
+            name: req.body.name,
+            description: req.body.description,
+            visibility: req.body.visibility,
+        };
 
-        res.redirect('/repositories/' + req.params.id + '/settings');
+        res.redirect('/repositories/' + req.params.id);
     }
 }
 
