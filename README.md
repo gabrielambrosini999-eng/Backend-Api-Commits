@@ -35,8 +35,6 @@ Proyecto de backend del modulo 4 de la diplomatura de fullstack de ICARO.
 - Aprobación
 - Merge a main
 
-
-
 #### Participantes
 
 - [Carla Lopez](https://github.com/carlalopeziribe-rp)
