@@ -7,7 +7,7 @@ module.exports = {
     },
 
     code : {
-        dest : '/uploads/code',
+        dest : './uploads/code',
         limits : {
             fileSize : 5 * 1024 * 1024
         }
