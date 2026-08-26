@@ -2,11 +2,13 @@
 const express = require('express');
 const router = express.Router();
 const ApiFileController = require('../controllers/ApiFileController');
+const fileApiMiddleware = require('../middlewares/fileApi');
 
-// Canal GET: Obtener todos los archivos
+router.use(fileApiMiddleware);
+
 router.get('/', ApiFileController.getAllFiles);
 
-// Canal POST: Crear un nuevo archivo
+
 router.post('/', ApiFileController.createFile);
 
 module.exports = router;
