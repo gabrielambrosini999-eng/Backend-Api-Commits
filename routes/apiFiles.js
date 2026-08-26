@@ -1,12 +1,12 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const fileController = require('../controllers/fileController');
+const ApiFileController = require('../controllers/ApiFileController');
 
 // Canal GET: Obtener todos los archivos
-router.get('/', fileController.getAllFiles);
+router.get('/', ApiFileController.getAllFiles);
 
 // Canal POST: Crear un nuevo archivo
-router.post('/', fileController.createFile);
+router.post('/', ApiFileController.createFile);
 
 module.exports = router;
