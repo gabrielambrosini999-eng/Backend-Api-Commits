@@ -11,8 +11,8 @@ var authRouter = require('./routes/auth');
 var usersRouter = require('./routes/users');
 var orgsRouter = require('./routes/organizations');
 var repositoryRouter = require('./routes/repositories');
-
 var ramasRouter = require('./routes/ramas');
+var filesApiRouter = require('./routes/filesApi');
 var app = express();
 var sessionSecret = process.env.SESSION_SECRET;
 var isProduction = process.env.NODE_ENV === 'production';
@@ -50,7 +50,7 @@ app.use('/', repositoryRouter);
 
 // defino la ruta de ramas
 app.use('/', ramasRouter);
-
+app.use('/api/files', filesApiRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
