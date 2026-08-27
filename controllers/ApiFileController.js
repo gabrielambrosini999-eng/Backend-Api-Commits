@@ -1,7 +1,7 @@
 'use strict';
 const { File } = require('../models');
 
-const fileController = {
+const ApiFileController = {
   // 1. GET /api/branches/:branchId/files
   getAllFiles: async (req, res) => {
     try {
@@ -38,7 +38,6 @@ const fileController = {
       const { branchId } = req.params;
       const { name, content } = req.body;
 
-      // Validaciones 
       if (isNaN(branchId)) {
         return res.status(400).json({ message: 'El branchId debe ser numérico' });
       }
@@ -104,4 +103,4 @@ const fileController = {
   }
 };
 
-module.exports = fileController;
+module.exports = ApiFileController;
