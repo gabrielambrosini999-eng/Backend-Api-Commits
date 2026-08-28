@@ -32,8 +32,11 @@ module.exports = {
                 onUpdate: 'CASCADE',
                 onDelete: 'SET NULL',
             },
-            // Relacionado con la tabla de usuarios
             created_at: {
+                type: Sequelize.DATE,
+                allowNull: false,
+            },
+            updated_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
