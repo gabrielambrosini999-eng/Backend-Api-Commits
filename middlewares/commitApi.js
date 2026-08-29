@@ -26,7 +26,7 @@ function validateCommitBody() {
 
         body('branch_id')
             .optional({ nullable: true })
-            .isInt().withMessage('El campo Id de la rama debe ser un número')
+            .isInt().withMessage('El campo Id de la rama debe ser un número'),
 
         body('user_id')
             .optional({ nullable: true })
