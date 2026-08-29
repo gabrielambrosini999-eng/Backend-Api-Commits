@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
+var apiCommitsRouter = require('./routes/apiCommits');
 var indexRouter = require('./routes/index');
 var filesRouter = require('./routes/files');
 var authRouter = require('./routes/auth');
@@ -41,6 +42,7 @@ app.use(session({
 }))
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/api', apiCommitsRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/', authRouter);
@@ -58,6 +60,13 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+
+  if (req.originalUrl && req.originalUrl.startsWith('/api')) {
+    return res.status(err.status || 500).json({
+      error: err.message || 'Error interno del servidor',
+    });
+  }
+  
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
